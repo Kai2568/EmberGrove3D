@@ -1,32 +1,70 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DragonInventory : MonoBehaviour
 {
-    [Header("Resources")]
-    [SerializeField] private int berryCount;
+    [Header("Inventory")]
+    [SerializeField] private List<InventorySlot> inventorySlots = new List<InventorySlot>();
 
-    public int BerryCount
+    public void AddItem(ItemData item, int amount)
     {
-        get
+        if (item == null)
         {
-            return berryCount;
-        }
-    }
+            Debug.LogWarning(
+                "The item being added to the inventory is missing.");
 
-    public void AddBerries(int amount)
-    {
+            return;
+        }
+
         if (amount <= 0)
         {
             return;
         }
 
-        berryCount += amount;
+        InventorySlot existingSlot = FindSlot(item);
+
+        if (existingSlot != null)
+        {
+            existingSlot.quantity += amount;
+        }
+        else
+        {
+            InventorySlot newSlot = new InventorySlot(item, amount);
+
+            inventorySlots.Add(newSlot);
+        }
 
         Debug.Log(
-            "Berries Collected: "
+            "Added "
             + amount
-            + " | Total berries: "
-            + berryCount
-            );
+            + " "
+            + item.ItemName
+            + ". New Total: "
+            + GetItemCount(item));
+    }
+
+   public int GetItemCount(ItemData item)
+    {
+        InventorySlot slot = FindSlot(item);
+
+        if (slot == null)
+        {
+            return 0;
+        }
+
+        return slot.quantity;
+    }
+
+    private InventorySlot FindSlot(ItemData item)
+    {
+        for (int i = 0; i < inventorySlots.Count; i++)
+        {
+            if (inventorySlots[i].item == item)
+            {
+                return inventorySlots[i];
+            }
+        }
+
+        return null;
     }
 }

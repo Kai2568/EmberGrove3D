@@ -4,6 +4,7 @@ using UnityEngine;
 public class BerryBush : Interactable
 {
     [Header("Berry Settings")]
+    [SerializeField] private ItemData berryItem;
     [SerializeField] private int berryAmount = 3;
 
     [Header("Respawn Settings")]
@@ -18,7 +19,8 @@ public class BerryBush : Interactable
 
     private void Start()
     {
-        dragonInventory = FindFirstObjectByType<DragonInventory>();
+        dragonInventory =
+            FindFirstObjectByType<DragonInventory>();
     }
 
     public override void Interact()
@@ -30,12 +32,26 @@ public class BerryBush : Interactable
 
         if (dragonInventory == null)
         {
-            Debug.LogWarning("No DragonInventory was found in the scene.");
+            Debug.LogWarning(
+                "No DragonInventory was found in the scene."
+            );
 
             return;
         }
 
-        dragonInventory.AddBerries(berryAmount);
+        if (berryItem == null)
+        {
+            Debug.LogWarning(
+                "The Berry item has not been assigned."
+            );
+
+            return;
+        }
+
+        dragonInventory.AddItem(
+            berryItem,
+            berryAmount
+        );
 
         StartCoroutine(RespawnBush());
     }

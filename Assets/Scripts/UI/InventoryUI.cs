@@ -5,12 +5,8 @@ public class InventoryUI : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private DragonInventory dragonInventory;
+    [SerializeField] private ItemData berryItem;
     [SerializeField] private TMP_Text berryCountText;
-
-    private void Start()
-    {
-        UpdateBerryText();
-    }
 
     private void Update()
     {
@@ -19,11 +15,19 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateBerryText()
     {
-        if (dragonInventory == null || berryCountText == null)
+        if (
+            dragonInventory == null
+            || berryItem == null
+            || berryCountText == null
+        )
         {
             return;
         }
 
-        berryCountText.text = "Berries: " + dragonInventory.BerryCount;
+        int berryCount =
+            dragonInventory.GetItemCount(berryItem);
+
+        berryCountText.text =
+            "Berries: " + berryCount;
     }
 }
