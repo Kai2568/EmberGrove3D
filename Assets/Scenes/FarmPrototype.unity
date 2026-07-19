@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8e4d5cd1d9c344a959d7755cd0c072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryCount: 0
+  inventorySlots: []
 --- !u!1 &754281539
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrompt: Interact
+  berryItem: {fileID: 11400000, guid: ccef76b4a81b5454e92c9cfd8fe66681, type: 2}
   berryAmount: 3
   respawnTime: 5
   bushVisual: {fileID: 411393335}
@@ -1110,6 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragonInventory: {fileID: 615198019}
+  berryItem: {fileID: 11400000, guid: ccef76b4a81b5454e92c9cfd8fe66681, type: 2}
   berryCountText: {fileID: 936212600}
 --- !u!1 &1239162885
 GameObject:

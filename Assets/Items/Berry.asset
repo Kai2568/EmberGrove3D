@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fabd571d3f41b44c952703c0b413b04, type: 3}
   m_Name: Berry
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Berry
   itemIcon: {fileID: 0}
   maximumStackSize: 99
