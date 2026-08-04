@@ -3,7 +3,6 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
     [Header("Interaction")]
-
     [SerializeField] private string interactionPrompt = "Interact";
 
     public string InteractionPrompt
@@ -14,6 +13,10 @@ public abstract class Interactable : MonoBehaviour
         }
     }
 
-    public abstract void Interact();
+    protected void SetInteractionPrompt(string newPrompt)
+    {
+        interactionPrompt = newPrompt;
+    }
 
+    public abstract void Interact();
 }

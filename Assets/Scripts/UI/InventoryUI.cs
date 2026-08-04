@@ -8,9 +8,22 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private ItemData berryItem;
     [SerializeField] private TMP_Text berryCountText;
 
-    private void Update()
+    private void Start()
     {
+        if (dragonInventory != null)
+        {
+            dragonInventory.InventoryChanged += UpdateBerryText;
+        }
+
         UpdateBerryText();
+    }
+
+    private void OnDestroy()
+    {
+        if (dragonInventory != null)
+        {
+            dragonInventory.InventoryChanged -= UpdateBerryText;
+        }
     }
 
     private void UpdateBerryText()

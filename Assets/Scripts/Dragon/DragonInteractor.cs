@@ -23,6 +23,16 @@ public class DragonInteractor : MonoBehaviour
     {
         FindInteractable();
 
+        if (
+            currentInteractable != null
+            && interactionPromptUI != null
+        )
+        {
+            interactionPromptUI.ShowPrompt(
+                currentInteractable.InteractionPrompt
+            );
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             TryInteract();
