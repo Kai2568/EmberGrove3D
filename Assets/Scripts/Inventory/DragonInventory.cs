@@ -5,9 +5,16 @@ using UnityEngine;
 public class DragonInventory : MonoBehaviour
 {
     [Header("Inventory")]
-    [SerializeField]
-    private List<InventorySlot> inventorySlots =
+    [SerializeField] private List<InventorySlot> inventorySlots =
         new List<InventorySlot>();
+
+    public IReadOnlyList<InventorySlot> InventorySlots
+    {
+        get
+        {
+            return inventorySlots;
+        }
+    }
 
     [Header("Starting Items")]
     [SerializeField] private ItemData startingItem;

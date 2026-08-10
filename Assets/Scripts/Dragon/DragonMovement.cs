@@ -14,6 +14,8 @@ public class DragonMovement : MonoBehaviour
     private Vector3 movementInput;
     private Vector3 facingDirection = Vector3.back;
 
+    public bool CanMove { get; set; } = true;
+
     public bool IsMoving { get; private set; }
 
     public Vector3 FacingDirection
@@ -43,7 +45,15 @@ public class DragonMovement : MonoBehaviour
 
     private void ReadMovementInput()
     {
+        if (!CanMove)
+        {
+            movementInput = Vector3.zero;
+            IsMoving = false;
+            return;
+        }
+
         float horizontalInput = Input.GetAxisRaw("Horizontal");
+
         float verticalInput = Input.GetAxisRaw("Vertical");
 
         movementInput = new Vector3(

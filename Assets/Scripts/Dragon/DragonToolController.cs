@@ -6,6 +6,8 @@ public class DragonToolController : MonoBehaviour
     [Header("Current Tool")]
     [SerializeField] private ToolType currentTool = ToolType.Hands;
 
+    public bool CanSwitchTools { get; set; } = true;
+
     public event Action<ToolType> ToolChanged;
 
     public ToolType CurrentTool
@@ -32,6 +34,11 @@ public class DragonToolController : MonoBehaviour
 
     private void ReadToolInput()
     {
+        if (!CanSwitchTools)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SelectTool(ToolType.Hands);

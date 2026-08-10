@@ -19,8 +19,20 @@ public class DragonInteractor : MonoBehaviour
     private Interactable currentInteractable;
     private Interactable previousInteractable;
 
+    public bool CanInteract { get; set; } = true;
+
     private void Update()
     {
+        if (!CanInteract)
+        {
+            if (interactionPromptUI != null)
+            {
+                interactionPromptUI.HidePrompt();
+            }
+
+            return;
+        }
+
         FindInteractable();
 
         if (
