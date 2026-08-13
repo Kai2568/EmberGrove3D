@@ -13,6 +13,7 @@ public class InventoryScreen : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private Transform slotContainer;
+    [SerializeField] private ItemDetailsUI itemDetailsUI;
 
     [Header("Prefabs")]
     [SerializeField] private InventorySlotUI slotPrefab;
@@ -68,6 +69,11 @@ public class InventoryScreen : MonoBehaviour
     private void OpenInventory()
     {
         inventoryOpen = true;
+
+        if (itemDetailsUI != null)
+        {
+            itemDetailsUI.HideDetails();
+        }
 
         if (inventoryPanel != null)
         {
@@ -126,6 +132,11 @@ public class InventoryScreen : MonoBehaviour
 
     private void RefreshInventory()
     {
+        if (itemDetailsUI != null)
+        {
+            itemDetailsUI.HideDetails();
+        }
+
         if (!inventoryOpen)
         {
             return;
@@ -162,7 +173,7 @@ public class InventoryScreen : MonoBehaviour
                     slotContainer
                 );
 
-            newSlot.Setup(slot);
+            newSlot.Setup(slot, itemDetailsUI);
         }
     }
 }

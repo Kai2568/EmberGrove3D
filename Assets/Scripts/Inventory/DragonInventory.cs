@@ -20,6 +20,17 @@ public class DragonInventory : MonoBehaviour
     [SerializeField] private ItemData startingItem;
     [SerializeField] private int startingAmount;
 
+    [Header("Selected Item")]
+    [SerializeField] private ItemData selectedItem;
+
+    public ItemData SelectedItem
+    {
+        get
+        {
+            return selectedItem;
+        }
+    }
+
     private void Start()
     {
         if (startingItem != null && startingAmount > 0)
@@ -184,5 +195,35 @@ public class DragonInventory : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void SelectItem(ItemData item)
+    {
+        if (item == null)
+        {
+            selectedItem = null;
+
+            Debug.Log("Selected item cleared.");
+
+            return;
+        }
+
+        if (!HasItem(item))
+        {
+            Debug.Log(
+                "Cannot select "
+                + item.ItemName
+                + " because it is not in the inventory."
+            );
+
+            return;
+        }
+
+        selectedItem = item;
+
+        Debug.Log(
+            "Selected item: "
+            + selectedItem.ItemName
+        );
     }
 }

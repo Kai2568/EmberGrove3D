@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Carrot
   m_EditorClassIdentifier: 
   itemName: Carrot
+  itemDescription: A freshly harvested carrot. Crunchy, sweet, and useful in cooking.
   itemIcon: {fileID: 21300000, guid: 477145a0e3312644589b87c944d805a4, type: 3}
   maximumStackSize: 99

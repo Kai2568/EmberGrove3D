@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Carrot Seed
   m_EditorClassIdentifier: 
   itemName: Carrot Seed
+  itemDescription: A small carrot seed. Plant it in tilled soil and give it water
+    to grow.
   itemIcon: {fileID: 21300000, guid: 084a880df96e3c34f91f73a1e1b68961, type: 3}
   maximumStackSize: 99
+  cropData: {fileID: 11400000, guid: 3eafbfb1e0f7ddb499a9b95d6c0d76dc, type: 2}
